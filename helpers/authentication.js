@@ -29,7 +29,6 @@ exports.generateToken = (
 ) => {
   // payload must be an object
   try {
-    console.log(secretKey,'secret key')
     return jwt.sign(payload, secretKey, options);
   } catch (error) {
     throw new ApiError(500, `Something went wrong - ${error.message}`);

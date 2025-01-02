@@ -69,7 +69,7 @@ exports.login = asyncHandler(async (req, res) => {
   if (passwordVerification) {
     const token = generateToken(
       { id: userCheck._id, role: userCheck.role },
-      process.env.secretkey
+      process.env.secretkey || `2d7c4b8e9f3a1d5c6b2e8f4a7d9c3b5a`
     );
     return res
       .status(200)

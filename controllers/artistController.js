@@ -95,7 +95,7 @@ exports.updateArtist = asyncHandler(async (req, res) => {
   let updatingFields = {};
   if (name) updatingFields.name = name;
   if (grammy) updatingFields.grammy = grammy;
-  if (hidden) updatingFields.hidden = hidden;
+  if (hidden !== undefined || hidden !== null) updatingFields.hidden = hidden;
 
   await artistModel.findByIdAndUpdate(artistId, updatingFields);
   return res

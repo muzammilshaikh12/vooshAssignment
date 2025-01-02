@@ -170,7 +170,7 @@ exports.updateTrack = asyncHandler(async (req, res) => {
   let updatingFields = {};
   if (name) updatingFields.name = name;
   if (duration) updatingFields.duration = duration;
-  if (hidden) updatingFields.hidden = hidden;
+  if (hidden !== undefined || hidden !== null) updatingFields.hidden = hidden;
 
   await trackModel.findByIdAndUpdate(trackId, updatingFields);
   return res

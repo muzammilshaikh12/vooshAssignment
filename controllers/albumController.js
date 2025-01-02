@@ -125,7 +125,7 @@ exports.updateAlbum = asyncHandler(async (req, res) => {
   let updatingFields = {};
   if (name) updatingFields.name = name;
   if (year) updatingFields.year = year;
-  if (hidden) updatingFields.hidden = hidden;
+  if (hidden !== undefined || hidden !== null) updatingFields.hidden = hidden;
 
   await albumModel.findByIdAndUpdate(albumId, updatingFields);
   return res

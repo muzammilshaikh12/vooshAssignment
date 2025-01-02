@@ -19,6 +19,7 @@ require("./database");
 const routes = require("./routes/routes");
 
 app.use("/", routes);
+console.log(process.env.secretKey)
 
 app.listen(process.env.port, () => {
   console.log(`Server Runing on port : ${process.env.port}`);

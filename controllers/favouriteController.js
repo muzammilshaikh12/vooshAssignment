@@ -11,6 +11,11 @@ exports.addFavourite = asyncHandler(async (req, res) => {
     return res.status(400).json(new ApiResponse(400, `Bad Request`));
   }
 
+  const favouriteCheck = await favouriteModel.findOne({item_id}).lean()
+  if(favouriteCheck) {
+    return res.status(409).json(new ApiResponse(409, `Favourite already exists.`));
+  }
+
   const validTypes = ["artist", "album", "track"];
   if (!validTypes.includes(category)) {
     return res.status(400).json(new ApiResponse(400, "Invalid item type"));

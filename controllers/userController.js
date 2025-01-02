@@ -81,9 +81,7 @@ exports.login = asyncHandler(async (req, res) => {
 
 exports.logout = asyncHandler(async (req, res) => {
   const id = req.user.id;
-  const userCheck = await userModel.findById({
-    id,
-  });
+  const userCheck = await userModel.findById(id);
 
   if (userCheck) {
     return res
